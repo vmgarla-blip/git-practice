@@ -10,6 +10,6 @@ echo "home directory of user is $HOME"
 echo "process id of script is $$"
 sleep 5 &
 echo "PID of background process is $!"
-wait $!
+wait  $!
 echo "Line number of script is $LINENO"
-echo "Script exectuted in $(secs) seconds"
+echo "Script exectuted in $(SECONDS) seconds"
