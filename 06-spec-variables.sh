@@ -10,3 +10,5 @@ echo "home directory of user is $HOME"
 echo "process id of script is $$"
 sleep 5 &
 echo "PID of background process is $!"
+wait $!
+echo "Line number of script is $LINENO"
