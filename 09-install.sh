@@ -6,6 +6,21 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
+# first arg - what software you are trying to isntall
+# second arg - exit code
+
+
+VALIDATE () {
+
+    if [ $2 -ne 0  ]; then
+        echo "$1 installation failed"
+        exit 1
+    else
+        echo "$1 installed successfully"
+    fi
+
+}
+
 dnf list installed mysql
 if [ $? -eq 0 ]; then
     echo "My sql server is already installed"
@@ -14,11 +29,14 @@ else
     echo "Installing my sql server..."
     dnf install mysql -y
 
+    VALIDATE "My sql server" $?
 
-  if [ $? -ne 0 ]; then
-    echo "My sql server installation failed"
-    exit 1
-  else
-    echo "My sql server installed successfully"
-  fi
-fi 
+dnf list installed nginx
+if [ $? -eq 0 ]; then
+    echo "nginx is already installed"
+    exit 0
+else
+    echo "Installing nginx..."
+    dnf install nginx -y
+    VALIDATE "nginx" $?
+fi    
