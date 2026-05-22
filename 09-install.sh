@@ -6,13 +6,19 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
-echo "Installing my sql server..."
+dnf list installed mysql
+if [ $? -eq 0 ]; then
+    echo "My sql server is already installed"
+    exit 0
+else
+    echo "Installing my sql server..."
+    dnf install mysql -y
 
-dnf install mysql -y
 
-if [ $? -ne 0 ]; then
+  if [ $? -ne 0 ]; then
     echo "My sql server installation failed"
     exit 1
-else
+  else
     echo "My sql server installed successfully"
-fi
+  fi
+fi 
