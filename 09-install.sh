@@ -8,4 +8,11 @@ fi
 
 echo "Installing my sql server..."
 
-dnf install mysqld -y
+dnf install mysql -y
+
+if [ $? -ne 0 ]; then
+    echo "My sql server installation failed"
+    exit 1
+else
+    echo "My sql server installed successfully"
+fi
