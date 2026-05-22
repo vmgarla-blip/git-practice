@@ -26,7 +26,7 @@ if [ $? -eq 0 ]; then
     echo "My sql server is already installed"
 else
     echo "Installing my sql server..."
-    dnf install mysql -y
+    dnf install mysql -y &>> $LOGS_FILE
 
     VALIDATE "My sql server" $?
  fi   
@@ -36,6 +36,6 @@ if [ $? -eq 0 ]; then
     echo "nginx is already installed"
 else
     echo "Installing nginx..."
-    dnf install nginx -y
+    dnf install nginx -y &>> $LOGS_FILE
     VALIDATE "nginx" $?
 fi    
