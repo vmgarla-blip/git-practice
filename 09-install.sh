@@ -1,4 +1,4 @@
-#!/bash/bin
+#!/bin/bash
 USERID=$(id -u)
 #Check if user is root
 if [ $USERID -ne 0 ]; then
@@ -8,8 +8,6 @@ fi
 
 # first arg - what software you are trying to isntall
 # second arg - exit code
-
-
 VALIDATE () {
 
     if [ $2 -ne 0  ]; then
@@ -24,17 +22,16 @@ VALIDATE () {
 dnf list installed mysql
 if [ $? -eq 0 ]; then
     echo "My sql server is already installed"
-    exit 0
 else
     echo "Installing my sql server..."
     dnf install mysql -y
 
     VALIDATE "My sql server" $?
+ fi   
 
 dnf list installed nginx
 if [ $? -eq 0 ]; then
     echo "nginx is already installed"
-    exit 0
 else
     echo "Installing nginx..."
     dnf install nginx -y
