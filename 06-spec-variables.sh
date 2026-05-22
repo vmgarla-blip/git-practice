@@ -8,3 +8,5 @@ echo "who is running the script $USER"
 echo "which directory we are in $(pwd)"
 echo "home directory of user is $HOME"
 echo "process id of script is $$"
+sleep 5 &
+echo "PID of background process is $!"
