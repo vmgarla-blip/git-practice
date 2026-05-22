@@ -7,3 +7,5 @@ if [ $USERID -ne 0 ]; then
 fi
 
 echo "Installing my sql server..."
+
+dnf install mysqld -y
