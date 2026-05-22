@@ -14,3 +14,4 @@ wait  $!
 echo "Line number of script is $LINENO"
 echo "Script exectuted in $SECONDS seconds"
 echo "Random number is $RANDOM"
+echo "exitcode of last command is $?"
