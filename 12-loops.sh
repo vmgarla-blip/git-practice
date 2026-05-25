@@ -5,6 +5,7 @@ USERID=$(id -u)
 USERID=$(id -u)
 LOGS_DIR=/home/ec2-user/shell-logs
 LOGS_FILE=$LOGS_DIR/$0.log
+TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
 if [ $USERID -ne 0 ]; then
     echo "Please run the script as root user"
     exit 1
@@ -15,10 +16,10 @@ fi
 VALIDATE () {
 
     if [ $2 -ne 0  ]; then
-        echo "$1 installation failed"
+        echo "$TIMESTAMP [ERROR]  Installing $1 failed" | tee -a $LOGS_FILE
         exit 1
     else
-        echo "$1 installed successfully"
+        echo "$1 installed successfully" | tee -a $LOGS_FILE
     fi
 
 }
