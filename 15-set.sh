@@ -13,6 +13,8 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+trap 'echo "Error at line $LINENO", COMMAND : $BASH_COMMAND "' ERR
+
 if [ $USERID -ne 0 ]; then
     echo "Please run the script as root user"
     exit 1
