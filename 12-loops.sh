@@ -21,10 +21,10 @@ fi
 VALIDATE () {
 
     if [ $2 -ne 0  ]; then
-        echo "$TIMESTAMP [ERROR]  Installing $1 is ... $R failed $N" | tee -a $LOGS_FILE
+        echo -e  "$TIMESTAMP [ERROR]  Installing $1 is ... $R failed $N" | tee -a $LOGS_FILE
         exit 1
     else
-        echo " $TIMESTAMP [INFO] $1 installed $G successfully $N" | tee -a $LOGS_FILE
+        echo -e " $TIMESTAMP [INFO] $1 installed $G successfully $N" | tee -a $LOGS_FILE
     fi
 
 }
@@ -37,7 +37,7 @@ do
         dnf install $package -y >> $LOGS_FILE
         VALIDATE "Installing $package" $?
     else
-        echo "  $TIMESTAMP [INFO]  $package already installed ... $Y skipping $N" 
+        echo -e "  $TIMESTAMP [INFO]  $package already installed ... $Y skipping $N" 
     fi
 
 
